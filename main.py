@@ -5,8 +5,6 @@ import white_stars as ws
 
 
 app = Flask(__name__)
-app.mount('/static', StaticFiles(directory='static'), name='static')
-
 
 @app.route('/')
 async def root():
@@ -30,3 +28,5 @@ async def red_stars() -> dict:
 async def white_stars() -> dict:
 
     return {'message': 'Get ready to rumble!'}
+
+if __name__ == '__main__':
