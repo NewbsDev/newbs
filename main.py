@@ -1,27 +1,32 @@
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
+from flask import Flask
 
 import red_stars as rs
 import white_stars as ws
 
 
-app = FastAPI()
+app = Flask(__name__)
 app.mount('/static', StaticFiles(directory='static'), name='static')
 
 
-@app.get('/')
+@app.route('/')
 async def root():
 
     return {'message': 'Hey! We\'re trying to work here!'}
 
 
-@app.get('/red_stars')
-async def red_stars():
+@app.route('/welcome')
+async def welcome(rndm_place: str = 'sideshow') -> dict:
 
-    return
+    return {'message': f'Welcome to the {rndm_place}.'}
 
 
-@app.get('/white_stars')
-async def white_stars():
+@app.route('/red_stars')
+async def red_stars() -> dict:
 
-    return
+    return {'message': 'Don\'t forget your miners.'}
+
+
+@app.route('/white_stars')
+async def white_stars() -> dict:
+
+    return {'message': 'Get ready to rumble!'}
