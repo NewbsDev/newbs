@@ -30,3 +30,4 @@ async def white_stars() -> dict:
     return {'message': 'Get ready to rumble!'}
 
 if __name__ == '__main__':
+    app.run()
